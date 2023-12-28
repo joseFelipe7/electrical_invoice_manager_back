@@ -1,5 +1,8 @@
 import  { TextractClient, AnalyzeDocumentCommand } from "@aws-sdk/client-textract";
 import { Invoice } from "@/domain/entities/Invoice";
+import { convertToFloat } from "@/utils/convertToFloat";
+
+import moment from 'moment';
 
 export class ReadInvoice {
   constructor() {}
@@ -24,9 +27,9 @@ export class ReadInvoice {
         AdaptersConfig: {
             Adapters: [ 
             { 
-                AdapterId: "dba6497ebf11", 
+                AdapterId: process.env.ADAPTER_ID, 
                 Pages:["1"],
-                Version: "3", 
+                Version: process.env.ADAPTER_VERSION, 
             },
             ],
         },
@@ -134,58 +137,37 @@ export class ReadInvoice {
             dataPdf[prop].value = querys?.map(item => item.Text).join(';')
             
         }
-        //valores para o banco de dados
+
+        // Formata a data no padrão desejado
         const dataSave = {
             clientNumber                :Number(dataPdf.customerNumber.value)??0,
             installationNumber          :Number(dataPdf.installationNumber.value)??0,
             
-            dateConsumption             :dataPdf.referenceMonth.value??'',
+            dateConsumption             :moment(dataPdf.referenceMonth.value, 'MMM/YYYY', 'pt-br')
+                                        .format('YYYY-MM')??'',
             
             electricalEnergyMeasure     :dataPdf.electricalEnergyData.value.split(';')[0]??'',
-            electricalEnergyConsumption :dataPdf.electricalEnergyData.value.split(';')[1]??'',
-            electricalEnergyCost        :dataPdf.electricalEnergyData.value.split(';')[2]??'',
+            electricalEnergyConsumption :convertToFloat(dataPdf.electricalEnergyData.value.split(';')[1]),
+            electricalEnergyCost        :convertToFloat(dataPdf.electricalEnergyData.value.split(';')[2]),
 
             energySceeeMeasure          :dataPdf.energySCEEEData.value.split(';')[0]??'',
-            energySceeeConsumption      :dataPdf.energySCEEEData.value.split(';')[1]??'',
-            energySceeeCost             :dataPdf.energySCEEEData.value.split(';')[2]??'',
+            energySceeeConsumption      :convertToFloat(dataPdf.energySCEEEData.value.split(';')[1]),
+            energySceeeCost             :convertToFloat(dataPdf.energySCEEEData.value.split(';')[2]),
           
             energyGdiMeasure            :dataPdf.energyGDIData.value.split(';')[0]??'',
-            energyGdiConsumption        :dataPdf.energyGDIData.value.split(';')[1]??'',
-            energyGdiCost               :dataPdf.energyGDIData.value.split(';')[2]??'',
+            energyGdiConsumption        :convertToFloat(dataPdf.energyGDIData.value.split(';')[1]),
+            
+            energyGdiCost               :convertToFloat(dataPdf.energyGDIData.value.split(';')[2]),
 
-            municipalContribution       :dataPdf.municipalContribution.value??'',
+            municipalContribution       :convertToFloat(dataPdf.municipalContribution.value),
 
-            invoiceAmount               :dataPdf.amount.value??'',
+            invoiceAmount               :convertToFloat(dataPdf.amount.value),
         }
+        console.log(dataPdf.energyGDIData.value.split(';')[2])
         return Invoice.create(dataSave)
-    } catch (error) {
+    } catch (error ) {
         console.log(error)
         throw new Error()
     }
   }
 }
-
-
-
-// import { IUserRepository } from "@/repositories/IUserRepository";
-// import { InvalidCredentialsError } from "@/useCases/errors/InvalidCredentialsError";
-// import { Invoice } from "@/domain/entities/Invoice";
-
-// type AuthenticateRequest = {
-//     email: string;
-//     password: string;
-// }
-// export class Authenticate {
-//   constructor(private userRepository: IUserRepository) {}
-
-//   async execute( data: AuthenticateRequest ) {
-
-//     const user = await this.userRepository.findByEmail(data.email)
-    
-//     if(!user) throw new InvalidCredentialsError()
-    
-//     if(user.props.password != data.password) throw new InvalidCredentialsError()
-    
-//     return user
-//   }
-// }

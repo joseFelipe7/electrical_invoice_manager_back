@@ -4,22 +4,22 @@ type InvoiceProps = {
   clientNumber: Number;
   installationNumber: Number;
   
-  dateConsumption: string;
+  dateConsumption: string|Date;
   
   electricalEnergyMeasure: string;
-  electricalEnergyConsumption: string;
-  electricalEnergyCost: string;
+  electricalEnergyConsumption: Number;
+  electricalEnergyCost: Number;
 
   energySceeeMeasure: string;
-  energySceeeConsumption: string;
-  energySceeeCost: string;
+  energySceeeConsumption: Number;
+  energySceeeCost: Number;
 
   energyGdiMeasure: string;
-  energyGdiConsumption: string;
-  energyGdiCost: string;
+  energyGdiConsumption: Number;
+  energyGdiCost: Number;
 
-  municipalContribution: string;
-  invoiceAmount: string;
+  municipalContribution: Number;
+  invoiceAmount: Number;
 };
 
 export class Invoice extends Entity<InvoiceProps> {

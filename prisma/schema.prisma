@@ -19,27 +19,27 @@ model User {
 }
 model Invoice {
   id                            String   @id @default(uuid())
-  client_number                 Int
-  installation_number           Int
+  client_number                 BigInt 
+  installation_number           BigInt 
   
-  date_consumption              DateTime
+  date_consumption              DateTime @db.Date
   // mounthConsumption DateTime @test.check("EXTRACT(DAY FROM data) = 1")
   // yearConsumption
   
   electrical_energy_measure     String
-  electrical_energy_consumption String
-  electrical_energy_cost        String
+  electrical_energy_consumption Decimal @db.Decimal(10,2)
+  electrical_energy_cost        Decimal @db.Decimal(10,2)
 
   energy_sceee_measure          String
-  energy_sceee_consumption      String
-  energy_sceee_cost             String
+  energy_sceee_consumption      Decimal @db.Decimal(10,2)
+  energy_sceee_cost             Decimal @db.Decimal(10,2)
 
   energy_gdi_measure            String
-  energy_gdi_consumption        String
-  energy_gdi_cost               String
+  energy_gdi_consumption        Decimal @db.Decimal(10,2)
+  energy_gdi_cost               Decimal @db.Decimal(10,2)
 
-  municipal_contribution        String
+  municipal_contribution        Decimal @db.Decimal(10,2)
 
-  invoice_amount                String
+  invoice_amount                Decimal @db.Decimal(10,2)
   created_at                    DateTime @default(now())
 }

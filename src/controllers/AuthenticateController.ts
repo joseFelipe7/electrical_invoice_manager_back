@@ -12,7 +12,10 @@ export class AuthenticateController {
     execute = async (request:Request, response:Response) => {
         const validate = authenticateRequest.validate(request.body)
        
-        if(validate.error) return response.status(422).json({message:'Dados invalidos'})
+        if(validate.error) return response.status(422).json({ 
+          errors:validate.error.details, 
+          message:'Dados invalidos'
+        })
         
         try {
           const requestData = validate.value

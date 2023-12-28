@@ -5,16 +5,16 @@ export class InvoiceResponse {
     installation_number: Number;
     date_consumption: string;
     electrical_energy_measure: string;
-    electrical_energy_consumption: string;
-    electrical_energy_cost: string;
+    electrical_energy_consumption: Number;
+    electrical_energy_cost: Number;
     energy_sceee_measure: string;
-    energy_sceee_consumption: string;
-    energy_sceee_cost: string;
+    energy_sceee_consumption: Number;
+    energy_sceee_cost: Number;
     energy_gdi_measure: string;
-    energy_gdi_consumption: string;
-    energy_gdi_cost: string;
-    municipal_contribution: string;
-    invoice_amount: string;
+    energy_gdi_consumption: Number;
+    energy_gdi_cost: Number;
+    municipal_contribution: Number;
+    invoice_amount: Number;
 
   constructor(invoice:Invoice){
     this.client_number = invoice.props.clientNumber

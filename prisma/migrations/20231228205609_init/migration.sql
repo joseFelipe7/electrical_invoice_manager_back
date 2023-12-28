@@ -14,7 +14,7 @@ CREATE TABLE "Invoice" (
     "id" TEXT NOT NULL,
     "client_number" INTEGER NOT NULL,
     "installation_number" INTEGER NOT NULL,
-    "date_consumption" TIMESTAMP(3) NOT NULL,
+    "date_consumption" DATE NOT NULL,
     "electrical_energy_measure" TEXT NOT NULL,
     "electrical_energy_consumption" TEXT NOT NULL,
     "electrical_energy_cost" TEXT NOT NULL,
