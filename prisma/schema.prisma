@@ -17,3 +17,29 @@ model User {
   password   String
   created_at DateTime @default(now())
 }
+model Invoice {
+  id                            String   @id @default(uuid())
+  client_number                 Int
+  installation_number           Int
+  
+  date_consumption              DateTime
+  // mounthConsumption DateTime @test.check("EXTRACT(DAY FROM data) = 1")
+  // yearConsumption
+  
+  electrical_energy_measure     String
+  electrical_energy_consumption String
+  electrical_energy_cost        String
+
+  energy_sceee_measure          String
+  energy_sceee_consumption      String
+  energy_sceee_cost             String
+
+  energy_gdi_measure            String
+  energy_gdi_consumption        String
+  energy_gdi_cost               String
+
+  municipal_contribution        String
+
+  invoice_amount                String
+  created_at                    DateTime @default(now())
+}
