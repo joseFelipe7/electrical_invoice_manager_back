@@ -1,26 +1,25 @@
 import { Entity } from "../../core/Entity";
 
 type InvoiceProps = {
-  id: string;
-  client_number: Number;
-  installation_number: Number;
+  clientNumber: Number;
+  installationNumber: Number;
   
-  date_consumption: string;
+  dateConsumption: string;
   
-  electrical_energy_measure: string;
-  electrical_energy_consumption: string;
-  electrical_energy_cost: string;
+  electricalEnergyMeasure: string;
+  electricalEnergyConsumption: string;
+  electricalEnergyCost: string;
 
-  energy_sceee_measure: string;
-  energy_sceee_consumption: string;
-  energy_sceee_cost: string;
+  energySceeeMeasure: string;
+  energySceeeConsumption: string;
+  energySceeeCost: string;
 
-  energy_gdi_measure: string;
-  energy_gdi_consumption: string;
-  energy_gdi_cost: string;
+  energyGdiMeasure: string;
+  energyGdiConsumption: string;
+  energyGdiCost: string;
 
-  municipal_contribution: string;
-  invoice_amount: string;
+  municipalContribution: string;
+  invoiceAmount: string;
 };
 
 export class Invoice extends Entity<InvoiceProps> {
