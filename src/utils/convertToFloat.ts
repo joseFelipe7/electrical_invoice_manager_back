@@ -6,7 +6,7 @@ export function convertToFloat(numberString:string) {
   const numberFloat = parseFloat(numberFormat);
 
   if (isNaN(numberFloat)) {
-    return null;
+    return 0;
   }
 
   return numberFloat;

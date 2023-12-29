@@ -19,8 +19,8 @@ model User {
 }
 model Invoice {
   id                            String   @id @default(uuid())
-  client_number                 BigInt 
-  installation_number           BigInt 
+  client_number                 String 
+  installation_number           String 
   
   date_consumption              DateTime @db.Date
   // mounthConsumption DateTime @test.check("EXTRACT(DAY FROM data) = 1")

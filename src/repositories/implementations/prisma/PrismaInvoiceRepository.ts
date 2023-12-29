@@ -11,7 +11,7 @@ export class PrismaInvoiceRepository implements IInvoiceRepository{
         client_number                 :invoice.props.clientNumber,
         installation_number           :invoice.props.installationNumber,
         
-        date_consumption              :new Date(`${invoice.props.dateConsumption}-01`),
+        date_consumption              :invoice.props.dateConsumption,
 
         electrical_energy_measure     :invoice.props.electricalEnergyMeasure,
         electrical_energy_consumption :invoice.props.electricalEnergyConsumption,
@@ -32,5 +32,19 @@ export class PrismaInvoiceRepository implements IInvoiceRepository{
     
     return invoiceCreate ? Invoice.create(invoiceCreate, invoiceCreate.id):null
   }
+  async list (where:object, perPage:number, page:number):Promise<Array<any>>{
+    const results = await prismaClient.$transaction([
+      prismaClient.invoice.count({ where: where }),
+      prismaClient.invoice.findMany({
+        skip: ((page-1)*perPage),
+        take: perPage,
+        where: where,
+        orderBy: {
+          created_at: 'desc',
+        },
+      }),
+    ])
+    return results??[]
+  };
   
 }

@@ -2,26 +2,26 @@ import { Invoice } from "@/domain/entities/Invoice";
 import { IInvoiceRepository } from "@/repositories/IInvoiceRepository";
 
 type CreateInvoiceRequest = {
-    client_number                 :number; 
-    installation_number           :number; 
+    client_number                 :string; 
+    installation_number           :string; 
     
     date_consumption              :string; 
 
     electrical_energy_measure     :string;
-    electrical_energy_consumption :string;
-    electrical_energy_cost        :string;
+    electrical_energy_consumption :number;
+    electrical_energy_cost        :number;
 
     energy_sceee_measure          :string;
-    energy_sceee_consumption      :string;
-    energy_sceee_cost             :string;
+    energy_sceee_consumption      :number;
+    energy_sceee_cost             :number;
 
     energy_gdi_measure            :string;
-    energy_gdi_consumption        :string;
-    energy_gdi_cost               :string;
+    energy_gdi_consumption        :number;
+    energy_gdi_cost               :number;
 
-    municipal_contribution        :string;
+    municipal_contribution        :number;
 
-    invoice_amount                :string;
+    invoice_amount                :number;
 }
 export class CreateInvoice {
   constructor(private invoiceRepository: IInvoiceRepository) {}

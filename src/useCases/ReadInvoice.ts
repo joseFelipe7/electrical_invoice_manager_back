@@ -140,8 +140,8 @@ export class ReadInvoice {
 
         // Formata a data no padrão desejado
         const dataSave = {
-            clientNumber                :Number(dataPdf.customerNumber.value)??0,
-            installationNumber          :Number(dataPdf.installationNumber.value)??0,
+            clientNumber                :dataPdf.customerNumber.value??'',
+            installationNumber          :dataPdf.installationNumber.value??'',
             
             dateConsumption             :moment(dataPdf.referenceMonth.value, 'MMM/YYYY', 'pt-br')
                                         .format('YYYY-MM')??'',

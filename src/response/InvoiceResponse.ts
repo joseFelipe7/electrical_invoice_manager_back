@@ -1,9 +1,9 @@
 import { Invoice } from "@/domain/entities/Invoice";
 
 export class InvoiceResponse {
-    client_number: Number;
-    installation_number: Number;
-    date_consumption: string;
+    client_number: string;
+    installation_number: string;
+    date_consumption: string | Date;
     electrical_energy_measure: string;
     electrical_energy_consumption: Number;
     electrical_energy_cost: Number;
@@ -60,5 +60,20 @@ export class InvoiceResponse {
         invoice_amount:item.props.invoiceAmount       
       }
     })
+  }
+  static paginate(listInvoice:Array<any>, page:number, perPage:number){
+    const [total, list] = listInvoice
+    const meta = {
+      total:total,
+      page:page,
+      per_page:perPage,
+      first_page:1,
+      last_page:Math.ceil(total/perPage)
+    }
+    const data = list
+    return {
+      meta,
+      data
+    }
   }
 }

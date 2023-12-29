@@ -4,13 +4,13 @@ import { readInvoiceFactory } from "@/useCases/factories/readInvoiceFactory"
 import { InvoiceResponse } from "@/response/InvoiceResponse";
 // const SECRET_KEY: Secret = process.env.SECRET_KEY??'';
 
-export class ReadInvoice {
+export class ReadInvoiceController {
     execute = async (request:Request, response:Response) => {
         const file = request.file
         
         const validate = readInvoiceRequest(file)
        
-        if(validate.error) return response.status(422).json({message:'Dados invalidos'})
+        if(validate.error) return response.status(422).json({message:'Invalid data'})
         
         try {
           const requestData = validate.value
@@ -18,7 +18,6 @@ export class ReadInvoice {
           const readInvoice = readInvoiceFactory()
 
           const invoice = await readInvoice.execute(requestData.buffer)
-          
           
           response.json({data: new InvoiceResponse(invoice)});
         } catch (error: any) {

@@ -1,5 +1,6 @@
 import { IUserRepository } from "@/repositories/IUserRepository";
 import { InvalidCredentialsError } from "@/useCases/errors/InvalidCredentialsError";
+import { compareSync } from "bcrypt";
 
 type AuthenticateRequest = {
     email: string;
@@ -14,7 +15,7 @@ export class Authenticate {
     
     if(!user) throw new InvalidCredentialsError()
     
-    if(user.props.password != data.password) throw new InvalidCredentialsError()
+    if(!compareSync(data.password, user.props.password)) throw new InvalidCredentialsError()
     
     return user
   }

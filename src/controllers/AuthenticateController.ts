@@ -14,7 +14,7 @@ export class AuthenticateController {
        
         if(validate.error) return response.status(422).json({ 
           errors:validate.error.details, 
-          message:'Dados invalidos'
+          message:'Invalid data'
         })
         
         try {

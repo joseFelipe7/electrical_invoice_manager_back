@@ -1,20 +1,16 @@
 import { Request, Response } from "express";
-import readInvoiceRequest from "@/validators/readInvoiceRequest";
-import { readInvoiceFactory } from "@/useCases/factories/readInvoiceFactory"
 import { InvoiceResponse } from "@/response/InvoiceResponse";
-import { PrismaInvoiceRepository } from "@/repositories/implementations/prisma/PrismaInvoiceRepository";
-import { Invoice } from "@/domain/entities/Invoice";
 import createInvoiceRequest from "@/validators/createInvoiceRequest";
 import { createInvoiceFactory } from "@/useCases/factories/createInvoiceFactory";
 
-export class CreateInvoice {
+export class CreateInvoiceController {
     execute = async (request:Request, response:Response) => {
 
       const validate = createInvoiceRequest.validate(request.body)
        
       if(validate.error) return response.status(422).json({ 
                                                             errors:validate.error.details, 
-                                                            message:'Dados invalidos'
+                                                            message:'Invalid data'
                                                           })
                                                           
       try {
