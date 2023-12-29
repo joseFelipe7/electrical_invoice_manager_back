@@ -19,7 +19,7 @@ export class CreateInvoiceController {
         const createInvoice = createInvoiceFactory()
 
         const invoice = await createInvoice.execute(requestData)
-        
+        console.log(invoice)
         if(invoice){
           response.json({data: new InvoiceResponse(invoice)});
         }else{
@@ -27,7 +27,6 @@ export class CreateInvoiceController {
         }
         
       } catch (error: any) {
-        console.log(error)
         return response.status(400).json({message:error.message})
 
       }

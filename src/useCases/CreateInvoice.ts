@@ -47,6 +47,6 @@ export class CreateInvoice {
 
     const invoiceCreate = await this.invoiceRepository.create(invoice)
     
-    return invoiceCreate
+    return invoice
   }
 }
