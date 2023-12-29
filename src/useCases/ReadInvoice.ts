@@ -163,10 +163,8 @@ export class ReadInvoice {
 
             invoiceAmount               :convertToFloat(dataPdf.amount.value),
         }
-        console.log(dataPdf.energyGDIData.value.split(';')[2])
         return Invoice.create(dataSave)
     } catch (error ) {
-        console.log(error)
         throw new Error()
     }
   }

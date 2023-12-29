@@ -4,9 +4,7 @@ export class ListInvoice {
     constructor(private invoiceRepository: IInvoiceRepository) {}
 
   async execute(filter:object, perPage:number, page:number):Promise<Array<any>> {
-    console.log(perPage)
-    console.log(filter)
-    console.log(page)
+    
     const whereFormat:any = {}
     Object.entries(filter).forEach(function([key, value]) {
         whereFormat[key] = {
