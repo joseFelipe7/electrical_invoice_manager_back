@@ -1,6 +1,6 @@
 <p align="center" backgroud="#000">
     <a href=" target="_blank"><img src="https://uploads-ssl.webflow.com/62f9249c43126cafce10bc33/62ffcb77b4351b3d229aa6a9_logo-lumi-green.svg" width="200" alt="Laravel Logo"></a>
-    <h3 align="center">Impulsionamos os seus negócios, gerenciado a sua energia</h3>
+    <h3 align="center">Impulsionamos os seus negócios, gerenciando a sua energia</h3>
 </p>
 
 <p align="center">
