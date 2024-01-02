@@ -1,6 +1,6 @@
 <p align="center" backgroud="#000">
     <a href=" target="_blank"><img src="https://uploads-ssl.webflow.com/62f9249c43126cafce10bc33/62ffcb77b4351b3d229aa6a9_logo-lumi-green.svg" width="200" alt="Laravel Logo"></a>
-    <h3 align="center">Impulsionamos os seus negócios, gerenciado a sua energia</h3>
+    <h3 align="center">Impulsionamos os seus negócios, gerenciando a sua energia</h3>
 </p>
 
 <p align="center">
@@ -23,6 +23,9 @@
 ✔️**AWS Textract** (para a leitura das faturas)<br/>
 ✔️**SOLID**<br/>
 ✔️**Documentação com Postman**<br/>
+
+## 🚀 Deploy
+-> Projeto foi hopedado em uma vps linux e pode ser encontrado no seguinte domínio electrical-invoice.if-developers.com.br
 
 ## 🚀 API
 -> Endpoints **Fatura** :
@@ -72,7 +75,8 @@ npm run dev
 ```
 <br/><br/>
 # 🚀 Acesse...
-- [Documentação Postman aqui](https://documenter.getpostman.com/view/12476316/2s9YkoeMhB#a7bd3a9a-188d-403c-a777-3e87ec85c892).
+- [Documentação Postman aqui](https://documenter.getpostman.com/view/12476316/2s9YsDmFf1).
+- [Hospedado aqui](https://electrical-invoice.if-developers.com.br)
 
 <p align="center">
     <a href="" target="_blank"><img src="https://uploads-ssl.webflow.com/62f9249c43126cafce10bc33/62ffcb77b4351b3d229aa6a9_logo-lumi-green.svg" width="150" alt="Laravel Logo"></a>
